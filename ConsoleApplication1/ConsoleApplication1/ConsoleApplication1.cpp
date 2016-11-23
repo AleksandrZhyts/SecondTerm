@@ -2,13 +2,11 @@
 
 using namespace std;
 
-typedef unsigned int ui;
-
 class fract
 {
 private:
 	int numerator;
-	ui denominator;
+	int denominator;
 	int GSD(int a, int b) const
 	{
 		if (a < 0)
@@ -97,7 +95,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, fract& d1)
 	{
-		return os << d1.numerator << "\/" << d1.denominator;
+		return os << d1.numerator << "/" << d1.denominator;
 	}
 
 	~fract() {};
