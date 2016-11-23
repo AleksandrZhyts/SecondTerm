@@ -3,27 +3,18 @@
 
 namespace Phone_book
 {
-	phone_book::phone_book()
-	{
-		size = 0;
-		ph_book = NULL;
-	}
-
 	phone_book::phone_book(int n)
 	{
-		if (n)
-		{
-			size = n;
-			ph_book = new record[n];
-		}
-		else phone_book();
+		size = n;
+		if (n) ph_book = new record[n];
+		else ph_book = NULL;
 	}
 
 	phone_book::phone_book(const phone_book& ph)
 	{
 		size = ph.size;
 		ph_book = new record[size];
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
 			ph_book[i] = ph.ph_book[i];
 		}
@@ -33,42 +24,42 @@ namespace Phone_book
 	{
 		record *ph = new record[size + 1];
 
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
 			ph[i] = ph_book[i];
 		}
 
 		char temp[100];
 
-		printf("\n******* %d - record**********\n", size);
+		std::cout << "\n******* " << size << " - record**********\n";
 
 		std::cout << "Enter FIO : ";
-		gets_s(temp, 99);
+		std::cin.getline(temp, 99);
 		ph[size].fio = (char*)malloc(strlen(temp) + 1);
 		strcpy_s(ph[size].fio, strlen(temp) + 1, temp);
 
 		std::cout << "Enter home phone : ";
-		gets_s(temp, 99);
+		std::cin.getline(temp, 99);
 		ph[size].h_phone = (char*)malloc(strlen(temp) + 1);
 		strcpy_s(ph[size].h_phone, strlen(temp) + 1, temp);
 
 		std::cout << "Enter home phone : ";
-		gets_s(temp, 99);
+		std::cin.getline(temp, 99);
 		ph[size].m_phone = (char*)malloc(strlen(temp) + 1);
 		strcpy_s(ph[size].m_phone, strlen(temp) + 1, temp);
 
 		std::cout << "Enter work phone : ";
-		gets_s(temp, 99);
+		std::cin.getline(temp, 99);
 		ph[size].w_phone = (char*)malloc(strlen(temp) + 1);
 		strcpy_s(ph[size].w_phone, strlen(temp) + 1, temp);
 
 		std::cout << "Enter additional information : ";
-		gets_s(temp, 99);
+		std::cin.getline(temp, 99);
 		ph[size].ad_information = (char*)malloc(strlen(temp) + 1);
 		strcpy_s(ph[size].ad_information, strlen(temp) + 1, temp);
 
 		ph_book = new record[++size];
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
 			ph_book[i] = ph[i];
 		}
@@ -79,7 +70,7 @@ namespace Phone_book
 	{
 		record *ph = new record[size + 1];
 
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
 			ph[i] = ph_book[i];
 		}
@@ -100,7 +91,7 @@ namespace Phone_book
 		strcpy_s(ph[size].ad_information, strlen(ad_inf) + 1, ad_inf);
 
 		ph_book = new record[++size];
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
 			ph_book[i] = ph[i];
 		}
@@ -109,15 +100,13 @@ namespace Phone_book
 
 	int phone_book::search_book(char *name)
 	{
-		bool flag = false;
-		ui i = 0;
-
-		while ((!flag) && (i < size)) {
-			if (_stricmp(name, ph_book[i].fio) == 0) flag = true;
+		uint i = 0;
+		while (i < size) 
+		{  
+			if (_stricmp(name, ph_book[i].fio) == 0) return i; 
 			else i++;
 		}
-		if (flag) return i;
-		else return -1;
+		return -1;
 	}
 
 	void phone_book::del_record(char* fio)
@@ -127,10 +116,10 @@ namespace Phone_book
 		if (index == -1) std::cout << "\nThis record absent in phonebook already\n";
 		else
 		{
-			printf("\n %d record was delete\n", index + 1);
+			std::cout << "\n" << index + 1 << " record was delete\n";
 
 			record *ph = new record[size - 1];
-			ui i = 0,
+			uint i = 0,
 				j = 0;
 			while (i < size)
 			{
@@ -139,7 +128,7 @@ namespace Phone_book
 			}
 
 			ph_book = new record[--size];
-			for (ui i(0); i < size; i++)
+			for (uint i(0); i < size; i++)
 			{
 				ph_book[i] = ph[i];
 			}
@@ -147,35 +136,36 @@ namespace Phone_book
 		}
 	}
 
-	void phone_book::show_record(ui i)
+	void phone_book::show_record(uint i)
 	{
-		printf("\n %d record: \n", i + 1);
+		std::cout << "\n" << i + 1 << " record\n";
+		
 		std::cout << "FIO : "
-			<< ph_book[i].fio
-			<< std::endl;
+				  << ph_book[i].fio
+				  << std::endl;
 		std::cout << "Home phone : "
-			<< ph_book[i].h_phone
-			<< std::endl;
+				  << ph_book[i].h_phone
+				  << std::endl;
 		std::cout << "Mobile phone : "
-			<< ph_book[i].m_phone
-			<< std::endl;
+				  << ph_book[i].m_phone
+				  << std::endl;
 		std::cout << "Work phone : "
-			<< ph_book[i].w_phone
-			<< std::endl;
+				  << ph_book[i].w_phone
+				  << std::endl;
 		std::cout << "Additional information : "
-			<< ph_book[i].ad_information
-			<< std::endl;
+				  << ph_book[i].ad_information
+				  << std::endl;
 	}
 
 	phone_book::~phone_book()
 	{
-		for (ui i(0); i < size; i++)
+		for (uint i(0); i < size; i++)
 		{
-			free(ph_book[i].fio);
-			free(ph_book[i].h_phone);
-			free(ph_book[i].m_phone);
-			free(ph_book[i].w_phone);
-			free(ph_book[i].ad_information);
+			delete ph_book[i].fio;
+			delete ph_book[i].h_phone;
+			delete ph_book[i].m_phone;
+			delete ph_book[i].w_phone;
+			delete ph_book[i].ad_information;
 		}
 		delete ph_book;
 	}	

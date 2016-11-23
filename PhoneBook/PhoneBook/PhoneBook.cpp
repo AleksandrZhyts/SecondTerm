@@ -4,7 +4,6 @@
 using namespace std;
 using namespace Phone_book;
 
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -15,14 +14,14 @@ int main()
 	//ph.add_record();
 	
 	ph.add_record("Иванов Иван Иванович", "25-74-26", "678-32-55", "28-63-97", "научный сотрудник");
-	
 	ph.add_record("Obama Vladimir Vladimirovich", "31-74-26", "+107(154)678-32-55", "28-63-97", "president");
 	
 	system("cls");
+	
 	cout << ph 
 		 << endl;
-	system("pause");
 	
+	system("pause");
 	system("cls");
 
 	// ***Find record use FIO***
@@ -31,9 +30,10 @@ int main()
 	if (index == -1) printf("\nThis record absent in base \n");
 	else 
 	{
-		printf("\n record was find\n");
+		cout << "\n record was find\n";
 		ph.show_record(index);
 	}
+	
 	system("pause");
 	system("cls");
 
