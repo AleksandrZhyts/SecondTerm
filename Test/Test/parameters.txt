@@ -1,0 +1,10 @@
+Perimetr = 8
+Area = 4
+Perimetr = 8
+Area = 4
+Perimetr = 8
+Area = 4
+Perimetr = 12
+Area = 9
+Perimetr = 18
+Area = 20
