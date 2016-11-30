@@ -172,8 +172,136 @@ void calculate(p point[], double &per, double &s)
 	s = a*b;
 }
 
+struct stack
+{
+	int a;
+	stack * ptr;
+};
+
+class queue
+{
+private:
+		stack *next;
+public:
+	queue() { next = NULL; }
+	
+	void push(int n)
+	{
+		stack *st = new stack;
+		st->a = n;
+		st->ptr = next;
+		next = st;
+	}
+	
+	void push2(int n)
+	{
+		stack *st = new stack;
+		st->a = n;
+		st->ptr = NULL;
+
+		if (!next)
+		{
+			next = st;
+			return;
+		}
+		stack *tmp = next;
+		while (tmp->ptr != NULL) tmp = tmp->ptr;
+		tmp->ptr = st;
+	}
+
+	int pop2()
+	{
+		if (!next) return false;
+		int tmp = next->a;
+		stack *st = next;
+		next = next->ptr;
+		delete st;
+		return tmp;
+	}
+
+	int pop()
+	{
+		if (!next) return false;
+		int tmp = next->a;
+		stack *st = next;
+		next = next->ptr;
+		delete st;
+		return tmp;	
+	}
+};
+
+class container
+{
+private:
+	int *mas;
+	int size;
+	int curent;
+	int min;
+public:
+	
+	container(int n = 0)
+	{ 
+		if (!n)
+		{
+			mas = NULL; 
+			size = 0;
+			curent = 0;
+			min = 0;
+		}
+		else
+		{
+			mas = new int[n];
+			size = n;
+			curent = 0;
+			min = 0;
+		}
+	}
+
+	void set(int a)
+	{
+		if (curent < size) mas[curent++] = a;
+	}
+
+	int get()
+	{
+		if (curent >= 0) return mas[--curent];
+	}
+
+	int get2()
+	{
+		if (min <= curent ) return mas[min++];
+	}
+	void resize()
+	{
+		curent = min;
+		min = 0;
+	}
+
+	bool Is_Empty()
+	{
+		return (curent == 0);
+	}
+	bool Is_Empty2()
+	{
+		return (curent == min);
+	}
+
+	bool Is_Full()
+	{
+		return (curent == size);
+	}
+
+	~container()
+	{
+		delete mas;
+	}
+
+};
+
+
 int  main()
 {
+	/*
 	char name_file[16];
 	cout << "Enter name of file to record " << endl;
 	cin >> name_file;
@@ -227,6 +355,45 @@ int  main()
 	cout << "Area = "
 		<< s
 		<< endl;
+*/
+	/*
+	queue q;
+	for (int i(0); i < 6; i++)
+	{
+		q.push(i + 1);
+	}
+	
+	for (int i(0); i < 6; i++)
+	{
+		cout << q.pop() << endl;
+	}
+	
+	for (int i(0); i < 6; i++)
+	{
+		q.push2(i + 1);
+	}
+
+	for (int i(0); i < 6; i++)
+	{
+		cout << q.pop2() << endl;
+	}
+	*/
+
+	container mas(6);
+	for (int i(0); !mas.Is_Full(); i++)
+	{
+		mas.set(i + 1);
+	}
+	
+	for (int i(0); !mas.Is_Empty(); i++)
+	{
+		cout << mas.get() << endl;
+	}
+
+	for (int i(0); !mas.Is_Empty2(); i++)
+	{
+		cout << mas.get2() << endl;
+	}
 
 	_getch();
 	return 0;
