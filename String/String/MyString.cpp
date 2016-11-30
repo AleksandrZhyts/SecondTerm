@@ -95,6 +95,18 @@ unsigned int MyString::getLen()
 	return _len;
 }
 
+std::ostream& operator<<(std::ostream& os, const MyString& st)
+{
+	return os << st._s;
+}
+
+std::istream& operator >> (std::istream& is, const MyString& st)
+{
+	std::cout << "Enter string : ";
+	is.getline(st._s, 80);
+	return is;
+}
+
 MyString::~MyString()
 {
 	delete[] _s;

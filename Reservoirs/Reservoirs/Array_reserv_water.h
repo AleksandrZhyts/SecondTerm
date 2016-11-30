@@ -19,25 +19,9 @@ public:
 	
 	void del_Reserv(char*);
 
-	friend std::ostream& operator<<(std::ostream& os, Array_reserv_water& arr)
-	{
-		for (unsigned int i(0); i < arr.amount; i++)
-		{
-			os << i + 1 << " reservoir :\n";
-			os << arr.arr_water[i];
-		}
-		return os;
-	}
-
-	friend std::istream& operator >> (std::istream& is, Array_reserv_water& arr)
-	{
-		for (unsigned int i(0); i < arr.amount; i++)
-		{
-			std::cout << "Enter " << i + 1 << " reservoir :\n";
-			is >> arr.arr_water[i];
-		}
-		return is;
-	}
+	friend std::ostream& operator<<(std::ostream&, Array_reserv_water&);
+	
+	friend std::istream& operator >> (std::istream&, Array_reserv_water&);
 	
 	~Array_reserv_water();
 };
