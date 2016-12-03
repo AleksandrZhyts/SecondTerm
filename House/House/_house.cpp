@@ -2,12 +2,13 @@
 #include "_house.h"
 
 
-_house::_house()
+_house::_house(unsigned int floors = 0, unsigned int flats = 0)
 {
-	number_flats = 0;
-	number_floors = 0;
+	number_flats = floors*flats;
+	number_floors = floors;
+	house = new Flat[number_flats];
 	address = NULL;
-	house = new Flat[number_flats];   //NULL
+	std::cout << "Constructor house" << std::endl;
 }
 
 _house::_house(const _house& h)
@@ -34,22 +35,13 @@ unsigned int _house::getNumber_flats()
 
 std::istream& operator >> (std::istream& is, _house& h)
 {
-	std::cout << "Enter number of flats : ";
-	is >> h.number_flats;
-	is.get();
-
-	h.house = new Flat[h.number_flats];
-
 	for (unsigned int i(0); i < h.number_flats; i++)
 	{
 		std::cout << "Enter " << i + 1 << " flats" << std::endl;
 		is >> h.house[i];
 	}
 
-	std::cout << "Enter number of floors : ";
-	is >> h.number_floors;
 	is.get();
-
 	std::cout << "Enter address : ";
 	h.address = new char[100];
 	is.getline(h.address, 99);
@@ -83,5 +75,5 @@ _house::~_house()
 	delete[] house;
 	house = NULL;
 
-	//std::cout << "Destructor house" << std::endl;
+	std::cout << "Destructor house" << std::endl;
 }

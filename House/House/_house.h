@@ -10,7 +10,7 @@ class _house
 public:
 	Flat *house;
 	
-	_house();
+	_house(unsigned int, unsigned int);
 
 	_house(const _house&);
 

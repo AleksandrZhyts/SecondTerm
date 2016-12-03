@@ -11,7 +11,7 @@ Flat::Flat()
 	living_space = 0.0;
 	kitchen_space = 0.0;
 	floor = 0;
-	//std::cout << "Constructor Flat" << std::endl;
+	std::cout << "Constructor Flat" << std::endl;
 }
 
 Flat::Flat(const Flat& fl)
@@ -53,14 +53,8 @@ void Flat::register_Person()
 	
 	delete[] roommates;
 
-	roommates = new Man[++number_roommates];
-	
-	for (unsigned int i(0); i < number_roommates; i++)
-	{
-		roommates[i] = temp[i];
-	}
-
-	delete[] temp;
+	number_roommates++;
+	roommates = temp;
  }
 
 int Flat::search_person(char *name)
@@ -93,14 +87,7 @@ void Flat::check_out_Person(char* name)
 		}
 		
 		delete[] roommates;
-
-		roommates = new Man[--number_roommates];
-		
-		for (unsigned int i(0); i < number_roommates; i++)
-		{
-			roommates[i] = temp[i];
-		}
-		delete [] temp;
+		number_roommates--;
 	}
 }
 
@@ -196,5 +183,5 @@ Flat::~Flat()
 	delete[] roommates;
 	roommates = NULL;
 	
-	//std::cout << "Destructor flat" << std::endl;
+	std::cout << "Destructor flat" << std::endl;
 }

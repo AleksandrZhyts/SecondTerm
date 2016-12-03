@@ -22,7 +22,7 @@ public:
 
 	bool compare_type(const Reservoir& r); 
 
-	bool operator<(const Reservoir& r);
+	bool operator<( Reservoir& r);
 	
 	void operator=(const Reservoir& r);
 	

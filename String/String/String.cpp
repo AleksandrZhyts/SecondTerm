@@ -6,8 +6,8 @@
 
 int main()
 {
-	MyString st1("Yes or "), st2("No ");
-	
+	MyString st1("world "), st2("Hello world ");
+	/*
 	std::cout << st1 << std::endl;
 	std::cout << st2 << std::endl;
 	
@@ -20,8 +20,7 @@ int main()
 	
 	std::cout << "New st1: " << st1 << std::endl;
 	std::cout << "New st2: " << st2 << std::endl;
-	
-	
+	*/
 
 	std::cout << "Less ? " << (st1 < st2) << std::endl;
 	std::cout << "Equal ? " << (st1 == st2) << std::endl;

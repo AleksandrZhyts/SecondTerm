@@ -5,7 +5,7 @@ Array_reserv_water::Array_reserv_water(unsigned int n = 0)
 {
 	amount = n;
 	arr_water = new Reservoir[n];
-	//std::cout << "Constructor array \n";
+	std::cout << "Constructor array \n";
 }
 
 Array_reserv_water::Array_reserv_water(const Array_reserv_water& arr)
@@ -41,14 +41,7 @@ void Array_reserv_water::add_Reserv(Reservoir& r)
 	this->~Array_reserv_water();
 	
 	amount = s;
-	arr_water = new Reservoir[amount];
-	
-	for (unsigned int i(0); i < amount; i++)
-	{
-		arr_water[i] = temp[i];
-	}
-
-	delete [] temp;
+	arr_water = temp;
 }
 
 int Array_reserv_water::search_reservoir(char *name)
@@ -80,14 +73,7 @@ void Array_reserv_water::del_Reserv(char* _name)
 		this->~Array_reserv_water();
 
 		amount = s;
-		arr_water = new Reservoir[amount];
-
-		for (unsigned int i(0); i < amount; i++)
-		{
-			arr_water[i] = temp[i];
-		}
-
-		delete [] temp;
+		arr_water = temp;
 	}
 	else std::cout << _name << " absent in our array " << std::endl;
 }
@@ -116,5 +102,5 @@ Array_reserv_water::~Array_reserv_water()
 {
 	delete [] arr_water;
 	arr_water = NULL;
-	//std::cout << "Destructor array \n";
+	std::cout << "Destructor array \n";
 }

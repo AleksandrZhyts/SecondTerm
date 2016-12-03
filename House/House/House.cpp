@@ -9,7 +9,7 @@
 
 int main()
 {
-	_house h;
+	_house h(1, 2);
 	std::cin >> h;
 	std::cout << h;
 	/*

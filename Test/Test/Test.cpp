@@ -298,10 +298,26 @@ public:
 
 };
 
+// пример использования  explicit 
+/*
+class Myclass
+{
+	int i;
+public:
+	explicit Myclass(int j) { i = j; }
+};
 
 int  main()
 {
-	/*
+	Myclass m(2);
+	Myclass m2 = 10;
+
+	return 0;
+}
+*/
+int  main()
+{
+/*
 	char name_file[16];
 	cout << "Enter name of file to record " << endl;
 	cin >> name_file;
@@ -378,7 +394,7 @@ int  main()
 		cout << q.pop2() << endl;
 	}
 	*/
-
+/*
 	container mas(6);
 	for (int i(0); !mas.Is_Full(); i++)
 	{
@@ -394,7 +410,8 @@ int  main()
 	{
 		cout << mas.get2() << endl;
 	}
-
+	*/
+		
 	_getch();
 	return 0;
 }

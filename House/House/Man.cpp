@@ -9,7 +9,7 @@ Man::Man()
 	m_phone = NULL;
 	add_inf = NULL;
 	age = 0;
-	//std::cout << "Constructor Man" << std::endl;
+	std::cout << "Constructor Man" << std::endl;
 }
 
 Man::Man(char* f, unsigned int a, char* s, char* m_st, char* m_ph, char* inf)
@@ -40,25 +40,7 @@ Man::Man(const Man& m)
 void Man::operator=(const Man& m1)
 {
 	this->~Man();
-	/*
-	delete[] fio;
-	fio = NULL;
-
-	delete[] sex;
-	sex = NULL;
-
-	delete[] marital_status;
-	marital_status = NULL;
-
-	delete[] m_phone;
-	m_phone = NULL;
-
-	delete[] add_inf;
-	add_inf = NULL;
-	*/
-// Ќе понимаю можно ли и как внутри этого метода вызвать €вный конструктор или копировани€ ? 	
-	 //Man this(m1); ?
-	
+		
 	fio = new char[strlen(m1.fio) + 1];
 	strcpy_s(fio, strlen(m1.fio) + 1, m1.fio);
 
@@ -141,5 +123,5 @@ Man::~Man()
 	delete[] add_inf;
 	add_inf = NULL;
 
-	//std::cout << "Destructor Man" << std::endl;
+	std::cout << "Destructor Man" << std::endl;
 }
