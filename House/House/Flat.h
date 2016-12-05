@@ -9,6 +9,7 @@ class Flat
 	double total_space;
 	double living_space;;
 	double kitchen_space;
+	double price;
 	unsigned int floor;
 
 public:
@@ -24,7 +25,13 @@ public:
 	
 	int search_person(char*);
 	
+	bool operator==(const Flat&);
+
+	bool operator>(const Flat&);
+	
 	unsigned int getNumber_roommates();
+	
+	double getPrice();
 
 	void operator=(const Flat&);
 

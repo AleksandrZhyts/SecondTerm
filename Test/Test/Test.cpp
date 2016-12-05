@@ -315,9 +315,11 @@ int  main()
 	return 0;
 }
 */
+
+/*
 int  main()
 {
-/*
+
 	char name_file[16];
 	cout << "Enter name of file to record " << endl;
 	cin >> name_file;
@@ -411,7 +413,49 @@ int  main()
 		cout << mas.get2() << endl;
 	}
 	*/
-		
-	_getch();
-	return 0;
+
+class A {
+	int a;
+public:
+	A()
+	{
+		a = 0;
+	}
+	A(int x)
+	{
+		a = x;
+	}
+	~A()
+	{
+	}
+	void set(int x)
+	{
+		a = x;
+	}
+	A operator+(const A &x)
+	{
+		A temp;
+		temp.a = a + x.a;
+		return temp;
+	}
+	bool operator==(const A &x)const
+	{
+		return (a == x.a);
+	}
+	void show()
+	{
+		cout << a << "\n";
+	}
+};
+void main()
+{
+	A a1(1), a2(3);
+	if (a1 == a2)
+	{
+		cout << "a1 == a2";
+	}
+	else
+	{
+		cout << "a1 != a2";
+	}
 }

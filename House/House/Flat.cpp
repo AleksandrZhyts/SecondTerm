@@ -10,6 +10,7 @@ Flat::Flat()
 	total_space = 0.0;
 	living_space = 0.0;
 	kitchen_space = 0.0;
+	price = 0.0;
 	floor = 0;
 	std::cout << "Constructor Flat" << std::endl;
 }
@@ -20,6 +21,7 @@ Flat::Flat(const Flat& fl)
 	total_space = fl.total_space;
 	living_space = fl.living_space;
 	kitchen_space = fl.kitchen_space;
+	price = fl.price;
 	floor = fl.floor;
 	
 	h_phone = new char[strlen(fl.h_phone) + 1];
@@ -35,9 +37,25 @@ Flat::Flat(const Flat& fl)
 	}
 }
 
+
+bool Flat::operator==(const Flat& fl)
+{
+	return (total_space == fl.total_space);
+}
+
+bool Flat::operator>(const Flat& fl)
+{
+	return (price > fl.price);
+}
+
 unsigned int Flat::getNumber_roommates()
 {
 	return number_roommates;
+}
+
+double Flat::getPrice()
+{
+	return price;
 }
 
 void Flat::register_Person()
@@ -87,7 +105,9 @@ void Flat::check_out_Person(char* name)
 		}
 		
 		delete[] roommates;
+		
 		number_roommates--;
+		roommates = temp;
 	}
 }
 
@@ -147,6 +167,9 @@ std::istream& operator >> (std::istream& is, Flat& fl)
 	std::cout << "Enter floor number : ";
 	is >> fl.floor;
 
+	std::cout << "Enter price : ";
+	is >> fl.price;
+
 	return is;
 }
 
@@ -170,6 +193,8 @@ std::ostream& operator << (std::ostream& os, Flat& fl)
 	os << "Kitchen space : " << fl.kitchen_space << std::endl;
 
 	os << "Number of floors : " << fl.floor << std::endl;
+
+	os << "Price : " << fl.price << std::endl;
 
 	return os;
 }

@@ -34,7 +34,21 @@ Man::Man(char* f, unsigned int a, char* s, char* m_st, char* m_ph, char* inf)
 
 Man::Man(const Man& m)
 {
-	Man m_copy(m.fio, m.age, m.sex, m.marital_status, m.m_phone, m.add_inf);   //так можно ??? 
+	fio = new char[strlen(m.fio) + 1];
+	strcpy_s(fio, strlen(m.fio) + 1, m.fio);
+	age = m.age;
+
+	sex = new char[strlen(m.sex) + 1];
+	strcpy_s(sex, strlen(m.sex) + 1, m.sex);
+
+	marital_status = new char[strlen(m.marital_status) + 1];
+	strcpy_s(marital_status, strlen(m.marital_status) + 1, m.marital_status);
+
+	m_phone = new char[strlen(m.m_phone) + 1];
+	strcpy_s(m_phone, strlen(m.m_phone) + 1, m.m_phone);
+
+	add_inf = new char[strlen(m.add_inf) + 1];
+	strcpy_s(add_inf, strlen(m.add_inf) + 1, m.add_inf);
 }
 
 void Man::operator=(const Man& m1)
