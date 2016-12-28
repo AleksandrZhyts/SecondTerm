@@ -6,4 +6,7 @@
 #include <tchar.h>
 #include <conio.h>
 #include <iostream>
-#include "string.h"
+#include <string>
+
+
+

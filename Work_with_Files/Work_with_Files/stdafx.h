@@ -4,6 +4,10 @@
 
 #include <stdio.h>
 #include <tchar.h>
-#include <conio.h>
+#include <stdlib.h>
 #include <iostream>
-#include "string.h"
+#include <windows.h>
+#include <io.h>
+#include <direct.h>
+#include <cstdio>
+

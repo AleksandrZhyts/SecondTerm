@@ -1,4 +1,5 @@
 #pragma once
+
 class MyString
 {
 	char* _s;
@@ -27,6 +28,8 @@ public:
 	void operator=(const MyString&);
 
 	unsigned int getLen();
+
+	bool bracket_location(); //ќпредел€ет правильное расположение скобок
 
 	friend std::ostream& operator<<(std::ostream&, const MyString&);
 	

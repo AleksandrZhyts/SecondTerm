@@ -95,6 +95,84 @@ unsigned int MyString::getLen()
 	return _len;
 }
 
+bool MyString::bracket_location()
+{
+	int count_circle_brackets = 0,
+		count_figure_brackets = 0,
+		count_square_brackets = 0;
+	int* arr1 = new int[_len];
+	int* arr2 = new int[_len];
+	int* arr3 = new int[_len];
+
+	unsigned int i = 0;
+	while ((_s[i] != ';') && (i < (_len + 1)))
+	{
+		switch (_s[i])
+		{
+		case '(': arr1[count_circle_brackets++] = i;
+				  break;
+		case '{': arr2[count_figure_brackets++] = i;
+				  break;
+		case '[': arr3[count_square_brackets++] = i;
+				  break;
+		case ')':
+		{
+			if ((count_circle_brackets == 0) ||
+				(count_figure_brackets > 0) && (arr2[count_figure_brackets - 1] > arr1[count_circle_brackets - 1]) ||
+				(count_square_brackets > 0) && (arr3[count_square_brackets - 1] > arr1[count_circle_brackets - 1]))
+			{
+				for (unsigned int j(0); j <= i; j++)
+				{
+					std::cout << _s[j];
+				}
+				return false;
+			}
+			else count_circle_brackets--;
+			break;
+		}
+		case '}':
+		{
+			if ((count_figure_brackets == 0) ||
+				(count_circle_brackets > 0) && (arr1[count_circle_brackets - 1] > arr2[count_figure_brackets - 1]) ||
+				(count_square_brackets > 0) && (arr3[count_square_brackets - 1] > arr2[count_figure_brackets - 1]))
+			{
+				for (unsigned int j(0); j <= i; j++)
+				{
+					std::cout << _s[j];
+				}
+				return false;
+			}
+			else count_figure_brackets--;
+			break;
+		}
+		case ']':
+		{
+			if ((count_square_brackets == 0) ||
+				(count_circle_brackets > 0) && (arr1[count_circle_brackets - 1] > arr3[count_square_brackets - 1]) ||
+				(count_figure_brackets > 0) && (arr2[count_figure_brackets - 1] > arr3[count_square_brackets - 1]))
+			{
+				for (unsigned int j(0); j <= i; j++)
+				{
+					std::cout << _s[j];
+				}
+				return false;
+			}
+			else count_square_brackets--;
+			break;
+		}
+		default:
+			break;
+		}
+		i++;
+	}
+	if (count_circle_brackets || count_figure_brackets || count_square_brackets)
+	{
+		std::cout << _s;
+		return false;
+	}
+	else return true;
+}
+
 std::ostream& operator<<(std::ostream& os, const MyString& st)
 {
 	return os << st._s;
