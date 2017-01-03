@@ -6,9 +6,9 @@ template <class T>
 struct Elem
 {
 	T data;
-	Elem *left = NULL,
-		 *right = NULL, 
-		 *parent = NULL;
+	Elem <T> *left = NULL,
+		     *right = NULL, 
+		     *parent = NULL;
 };
 
 template <class T>
