@@ -37,7 +37,7 @@ void DB_GAI::Print_to_Screen(char* name)
 {
 	FILE * f;
 
-	if (fopen_s(&f, name, "r"))
+	if (fopen_s(&f, name, "r"))  
 	{
 		cout << "This car doesn't have shtrafs !\n";
 		return;
