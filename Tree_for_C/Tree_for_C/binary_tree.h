@@ -1,6 +1,3 @@
-#pragma once
-
-using namespace std;
 
 template <class T>
 struct Elem
@@ -52,7 +49,6 @@ public:
 
 private:
 	Elem<T>* root;
-	
 	int left_branch,
 	    right_branch;
 
@@ -83,7 +79,7 @@ void binary_tree<T>::Print(Elem<T>* Node)
 	if (Left) Print(Left);
 	if (Right) Print(Right);
 
-	cout << Node->data << endl;
+	wcout << Node->data << endl;
 }
 
 //поиск от указанного узла
@@ -197,7 +193,8 @@ void binary_tree<T>::Insert(Elem<T>* z)
 	else
 	{
 		if (z->data < y->data) y->left = z;
-		else  y->right = z;                    //if (z->data >= y->data)
+
+		if (z->data > y->data) y->right = z;
 
 		if ((y->right == NULL) || (y->left == NULL))
 			if (flag) left_branch += (index > left_branch);
@@ -231,7 +228,7 @@ void binary_tree<T>::Balansing(bool flag, T data)
 	else
 	{
 		left_branch++;
-		if (data >= Node->right->data) right_branch--;
+		if (data > Node->right->data) right_branch--;
 		y = Node->right;
 		Node->right = y->left;
 		if (y->left) y->left->parent = Node; 
