@@ -3,18 +3,20 @@
 
 int main()
 {
+	BitString s1("111100000"), s2("11100011");
+	
+	std::cout << s1 + s2 << std::endl;
+	
+	s1 += s2;
+	std::cout << s1 << std::endl;
+
+	s1.change_sign();
+	std::cout << s1 << std::endl;
+
+	/*
 	MyString st1("([x-y-z}*[x+2y)-{z+4x)]."), st2("({x-y-z}*[x+2y]-(z+4x));");
 	MyString st3("((((()))).");
 
-	char a[15] = {'1','2','3','4','5','6','1','1','1','1','1','1'};
-	char *ptr1 = a,
-		**ptr2 = &ptr1;
-	std::cout << *ptr1 << std::endl;
-	//std::cout << *ptr2 << std::endl;
-	//++ptr2;
-	std::cout << *(ptr2+1) << std::endl;
-
-	/*
 	std::cout << st1 << std::endl;
 	std::cout << st2 << std::endl;
 	
