@@ -3,13 +3,6 @@
 
 using namespace std;
 
-void RussianMessage(char *message)
-{
-	char rmessage[256];
-	CharToOemA(message, rmessage);
-	std::cout << rmessage;
-}
-
 int RussianMenu()
 {
 	RussianMessage("\nВведите 1 для поиска по названию\n");
@@ -27,7 +20,7 @@ int RussianMenu()
 
 int main()
 {
-	_directory d;
+	_directory d("d:\\directory.txt", "asas", "asas", "asas", "asas", "asas");
 
 	do {
 		switch (RussianMenu())
@@ -58,7 +51,6 @@ int main()
 			RussianMessage("Неверный Ввод\n");
 		}
 	} while (1);
-	
 	
 	return 0;
 }

@@ -282,8 +282,9 @@ BitString& BitString::operator+(const BitString& st)
 	{
 		if (flag)
 		{
-			for (unsigned int i = 0; i < size - _len; i++)
-				temp1[i] = (char)(48 + (*_s == 1));              //fill 1 or 0
+			temp1[0] = (char)(48 + (*_s == 1));        //fill 1 or 0
+			for (unsigned int i = 1; i < size - _len; i++)
+				temp1[i] = '0';             
 
 			temp1[size - _len] = '\0';
 			strcat_s(temp1, size + 1, _s);
@@ -291,8 +292,9 @@ BitString& BitString::operator+(const BitString& st)
 		}
 		else
 		{
+			temp1[0] = (char)(48 + (*st._s == 1));          //fill 1 or 0
 			for (unsigned int i = 0; i < size - st._len; i++)
-				temp1[i] = (char)(48 + (*st._s == 1));          //fill 1 or 0
+				temp1[i] = '0';          
 
 			temp1[size - st._len] = '\0'; 
 			strcat_s(temp1, size + 1, st._s);

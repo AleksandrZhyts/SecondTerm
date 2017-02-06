@@ -3,6 +3,13 @@
 
 using namespace std;
 
+void RussianMessage(char *message)
+{
+	char rmessage[256];
+	CharToOemA(message, rmessage);
+	std::cout << rmessage;
+}
+
 _directory::_directory()
 {
 	company = nullptr;
@@ -10,10 +17,27 @@ _directory::_directory()
 	phone = nullptr;
 	address = nullptr;
 	occupation = nullptr;
+	
+	RussianMessage("Введите путь и имя файла:\n");
+	char* destination = new char[30];
+	cin >> destination;
+	f.open(destination, ios::out | ios::in | ios::binary | ios::app);
+	
+	if (!f) {
+		RussianMessage("Файл не открылся !!!");
+		exit(1);
+	}
 }
 
-_directory::_directory(char* c, char* o, char* p, char* a, char* oc)
+_directory::_directory(char* destination, char* c, char* o, char* p, char* a, char* oc)
 {
+	f.open (destination, ios::out | ios::in | ios::binary | ios::app);
+	
+	if (!f) {
+		RussianMessage("Файл не открылся !!!");
+		exit(1);
+	}
+
 	company = new char[strlen(c) + 1];
 	if (!company) 
 	{
@@ -53,6 +77,8 @@ _directory::_directory(char* c, char* o, char* p, char* a, char* oc)
 		exit(1);
 	}
 	strcpy_s(occupation, strlen(oc) + 1, oc);
+
+	add();
 }
 
 void _directory::put()
@@ -126,11 +152,6 @@ void _directory::put()
 
 void _directory::search_record(int key)
 {
-	fstream f("d:\\directory.txt", ios::in | ios::binary);
-	if (!f) {
-		RussianMessage("Файл не открылся для чтения !!!");
-		exit(1);
-	}
 	char *str_c = nullptr, 
 		 *str_o = nullptr, 
 		 *str_p = nullptr, 
@@ -145,6 +166,8 @@ void _directory::search_record(int key)
 	RussianMessage("Введите поле для поиска: ");
 	cin >> str;
 	
+	f.seekg(0);
+
 	while (f.read((char*)&_size, sizeof(int)) && !flag)
 	{
 		delete[]str_c;
@@ -235,17 +258,14 @@ void _directory::search_record(int key)
 		cout << str_oc;
 	}
 	else cout << "\nThat record is absent in directory\n";
+		
+	f.clear();
 }
 
 void _directory::add()
 {
 	int _size;
-	fstream f("d:\\directory.txt", ios::out | ios::binary | ios::app);
-	if (!f) {
-		RussianMessage("Файл не открылся для записи !!!");
-		exit(1);
-	}
-	
+
 	_size = strlen(company);
 	//Записываем количество символов в имени
 	f.write((char*)&_size, sizeof(int));
@@ -268,24 +288,21 @@ void _directory::add()
 	f.write((char*)&_size, sizeof(int));
 	f.write((char*)occupation, _size * sizeof(char));
 	
-	f.close();
+	f.seekg(f.tellp());
 }
 
 void _directory::ShowFromFile()
 {
-	fstream f("d:\\directory.txt", ios::in | ios::binary);
-	if (!f)
-	{
-		RussianMessage("Файл не открылся для чтения !!!");
-		exit(1);
-	}
 	char *str_temp;
 	int _size,
 		 temp;
 	
+	f.seekg(0);
+		
 	//В цикле зачитываем содержимое файла
 	while (f.read((char*)&_size, sizeof(int)))
 	{
+
 		str_temp = new char[_size + 1];
 		if (!str_temp)
 		{
@@ -356,6 +373,7 @@ void _directory::ShowFromFile()
 		
 		delete[]str_temp;
 	}
+	f.clear();
 }
 
 _directory::~_directory()
@@ -365,4 +383,5 @@ _directory::~_directory()
 	delete[] phone;
 	delete[] address;
 	delete[] occupation;
+	f.close();
 }

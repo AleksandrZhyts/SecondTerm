@@ -21,9 +21,10 @@ void RussianMessage(char *message);
 class _directory
 {
 public:
+	
 	_directory();
 	
-	_directory(char*, char*, char*, char*, char*);
+	_directory(char*, char*, char*, char*, char*, char*);
 
 	void put();
 
@@ -32,10 +33,10 @@ public:
 	void add();
 	
 	void ShowFromFile();
-
+	
 	~_directory();
 private:
-	
+	std::fstream f;
 	char *company;
 	char *owner;
 	char *phone;

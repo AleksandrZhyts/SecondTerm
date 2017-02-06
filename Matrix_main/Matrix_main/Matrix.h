@@ -46,7 +46,7 @@ public:
 		os << "\n";
 		return os;
 	}
-
+	
 private:
 	T** matr;
 	int col;

@@ -118,6 +118,6 @@ int main()
 	fclose(f1);
 	fclose(f2);
 	fclose(f3);
-	
+
 	return 0;
 }
