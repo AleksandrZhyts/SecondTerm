@@ -115,8 +115,8 @@ map<string, string>& _dictionary::read_from_file(char* source)
 		str_word = word;
 
 		j = 0;
-		while (i < (strlen(str) - 1))
-			value[j++] = str[i++];
+		while (++i < (strlen(str) - 1))
+			value[j++] = str[i];
 
 		value[j] = '\0';
 		str_value = value;

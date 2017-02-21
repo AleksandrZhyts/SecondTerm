@@ -5,6 +5,7 @@ using namespace std;
 
 int RussianMenu()
 {
+	RussianMessage("\nEnter something\n");
 	RussianMessage("\n¬ведите 1 дл€ поиска по названию\n");
 	RussianMessage("¬ведите 2 дл€ поиска по владельцу\n");
 	RussianMessage("¬ведите 3 дл€ поиска по номеру телефона\n");

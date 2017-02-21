@@ -1,0 +1,19 @@
+// правило1 - запрещено копировать файлы с этими расширениями
+// правило2 - разрешено копировать файлы с этими расширениями
+// правило3 - разрешено копировать файлы с этими словами предварительно зашифровав
+// правило4 - запрещено копировать файлы с этими словами
+
+guest.rule1=.exe,.cpp,.hpp,.dll;
+guest.rule2=.txt,.doc;
+guest.rule3=plan,old project;
+guest.rule4=programm,main,include,secret,password;
+
+developer.rule1=.dll,.lib;
+developer.rule2=.txt,.doc,.exe,.cpp,.hpp;
+developer.rule3=programm,main,include;
+developer.rule4=secret,password;
+
+tester.rule1=.dll,.lib,.exe;
+tester.rule2=.txt,.doc,.cpp,.hpp;
+tester.rule3=programm,main,include;
+tester.rule4=secret,password;

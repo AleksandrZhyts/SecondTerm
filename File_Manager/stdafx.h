@@ -2,8 +2,10 @@
 
 #include "targetver.h"
 
+#include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
 #include <iostream>
 #include <string>
 #include <io.h>
+#include <fstream>

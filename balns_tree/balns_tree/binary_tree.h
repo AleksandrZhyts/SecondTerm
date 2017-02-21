@@ -4,7 +4,7 @@ using namespace std;
 
 template <class T>
 struct Elem
-{
+{ 
 	T data;
 	Elem <T> *left = NULL,
 		     *right = NULL, 
