@@ -1,7 +1,5 @@
 #pragma once
 #include "stdafx.h"
-//#include "Menu.h"
-//#include "UserPolicy.h"
 
 void russianMessage(char *message)
 {

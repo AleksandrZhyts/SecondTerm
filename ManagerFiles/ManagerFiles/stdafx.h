@@ -17,7 +17,5 @@
 #include "User.h"
 #include "UserPolicy.h"
 #include "Work_with_File.h"
-#include "encryption.h"
+//#include "encryption.h"
 #include "hash.h"
-
-

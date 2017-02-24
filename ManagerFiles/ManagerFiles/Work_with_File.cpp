@@ -84,6 +84,7 @@ bool Work_with_File::copyFile(string source, string destination)
 
 	if (fopen_s(&dest, destination.c_str(), "wb"))
 	{
+		fclose(src);
 		delete[]data;
 		return false;
 	}

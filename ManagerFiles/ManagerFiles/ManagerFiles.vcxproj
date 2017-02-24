@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BD0E4B43-F570-4E56-8A2A-56FE6F949175}</ProjectGuid>
+    <ProjectGuid>{A85358F6-543C-4C6F-942E-AB326AB11882}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>File_Manager</RootNamespace>
+    <RootNamespace>ManagerFiles</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,7 +145,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="encryption.h" />
     <ClInclude Include="hash.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="stdafx.h" />
@@ -155,9 +154,8 @@
     <ClInclude Include="Work_with_File.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="encryption.cpp" />
-    <ClCompile Include="File_Manager.cpp" />
     <ClCompile Include="hash.cpp" />
+    <ClCompile Include="ManagerFiles.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

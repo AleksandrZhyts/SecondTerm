@@ -1,6 +1,5 @@
 #pragma once
 #include "stdafx.h"
-//#include "User.h"
 
 using namespace std;
 
