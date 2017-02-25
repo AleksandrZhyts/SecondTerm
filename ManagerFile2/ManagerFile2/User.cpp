@@ -4,8 +4,7 @@ User::User()
 {
 	Hash _hash;
 	
-	if (_hash.is_File_Shifr("Db.txt"))
-		_hash.shifrFile("Db.txt",true);  //расшифровываем DB
+	_hash.shifrFile("Db.txt",true);  //расшифровываем DB
 
 	f.open("Db.txt", ios::out | ios::in | ios::binary | ios::app);
 	if (!f)
@@ -70,19 +69,19 @@ void User::enterUser(int key)
 	}
 }
 
-void User::writeUser(fstream& _file)
+void User::writeUser(fstream& f)
 {
 	int _size = _user.name.size();
-	_file.write((char*)&_size, sizeof(int));
-	_file.write(_user.name.c_str(), _size * sizeof(char));
+	f.write((char*)&_size, sizeof(int));
+	f.write(_user.name.c_str(), _size * sizeof(char));
 
 	_size = _user.password.size();
-	_file.write((char*)&_size, sizeof(int));
-	_file.write(_user.password.c_str(), _size * sizeof(char));
+	f.write((char*)&_size, sizeof(int));
+	f.write(_user.password.c_str(), _size * sizeof(char));
 
-	_file.write((char*)&_user.user_Policy, sizeof(int));
+	f.write((char*)&_user.user_Policy, sizeof(int));
 
-	_file.seekg(_file.tellp());
+	f.seekg(f.tellp());
 }
 
 void User::addUserDb()
@@ -97,7 +96,7 @@ void User::editUserDb(int key)
 {
 	fstream f2;
 	f2.open("TempDb.txt", ios::out | ios::in | ios::binary | ios::app);
-	if (!f2)
+	if (!f)
 	{
 		russianMessage("Файл не открылся !!!");
 		exit(1);
@@ -147,34 +146,28 @@ void User::editUserDb(int key)
 			f2.write(m.password.c_str(), _size * sizeof(char));
 
 			f2.write((char*)&m.user_Policy, sizeof(int));
-
-			f2.seekg(f2.tellp());
 		}
 	}
+
+	f.close();
+	f2.close();
 	
+	remove("Db.txt");
+	Work_with_File wf;
+	wf.copyFile("TempDb.txt", "Db.txt");
+	remove("TempDb.txt");
+
+	f.open("Db.txt", ios::out | ios::in | ios::binary | ios::app);
+	if (!f)
+	{
+		russianMessage("Файл не открылся !!!");
+		exit(1);
+	}
+
 	if (!is_user)
 	{
-		russianMessage("\nНеверное имя пользователя или пароль\n");
+		russianMessage("Неверное имя пользователя или пароль");
 		system("pause");
-	}
-	else
-	{
-		f.close();
-		f2.close();
-		
-		if (remove("Db.txt") == 0) cout << "\n\Delete\n";
-		else cout << "\nNoDelete\n";
-		
-		Work_with_File wf;
-		wf.copyFile("TempDb.txt", "Db.txt");
-		remove("TempDb.txt");
-		
-		f.open("Db.txt", ios::out | ios::in | ios::binary | ios::app);
-		if (!f)
-		{
-			russianMessage("Файл не открылся !!!");
-			exit(1);
-		}
 	}
 }
 
@@ -273,6 +266,5 @@ User::~User()
 	//Зашифровываем DB
 	f.close();
 	Hash _hash;
-	if (!_hash.is_File_Shifr("Db.txt"))
-		_hash.shifrFile("Db.txt");
+	_hash.shifrFile("Db.txt");
 }

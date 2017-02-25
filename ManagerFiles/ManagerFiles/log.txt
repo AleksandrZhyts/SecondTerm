@@ -1,0 +1,90 @@
+[Error]
+Leha
+Sat Feb 25 17:12:08 2017
+
+d:\decod.txt
+d:\decod1.txt
+No right to copy
+
+[Error]
+Leha
+Sat Feb 25 17:46:49 2017
+
+d:\decod.txt
+d:\decod.txt
+Violated the fifth rule of backup policies
+
+[Error]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\decod.txt
+d:\decod2.txt
+No right to copy
+
+[Success]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\input.txt
+d:\input1.txt
+
+[Success]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\decod.txt
+d:\decod.txt
+
+[Error]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\decod.txt
+d:\decod.txt
+The file is already encrypted
+
+[Success]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\decod.txt
+d:\decod.txt
+
+[Success]
+Leha
+Sat Feb 25 17:46:22 2017
+
+d:\input.txt
+d:\input.txt
+
+[Success]
+Dima
+Sat Feb 25 17:55:34 2017
+
+d:\decod.txt
+d:\decod3.txt
+
+[Error]
+Leha
+Sat Feb 25 18:01:21 2017
+
+d:\decod.txt
+d:\decod.txt
+Violated the fifth rule of backup policies
+
+[Error]
+Leha
+Sat Feb 25 18:00:02 2017
+
+d:\decod.txt
+d:\decod23.txt
+No right to copy
+
+[Success]
+Dima
+Sat Feb 25 18:04:37 2017
+
+d:\decod.txt
+d:\decod3.txt
+

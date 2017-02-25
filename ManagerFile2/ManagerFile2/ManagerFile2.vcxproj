@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A85358F6-543C-4C6F-942E-AB326AB11882}</ProjectGuid>
+    <ProjectGuid>{FEAA128F-6FEF-42A7-90CE-EA4B07BAEA43}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ManagerFiles</RootNamespace>
+    <RootNamespace>ManagerFile2</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -156,7 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hash.cpp" />
-    <ClCompile Include="ManagerFiles.cpp" />
+    <ClCompile Include="ManagerFile2.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Monitoring.cpp" />
     <ClCompile Include="stdafx.cpp">

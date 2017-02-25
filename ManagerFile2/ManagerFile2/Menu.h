@@ -68,7 +68,7 @@ bool menu<T>::menu_Admin()
 	russianMessage("\t7 - расшифровка файла\n");
 	russianMessage("\t8 - вывод содержимого файла на экран\n");
 	russianMessage("\t9 - переименование существующего файла\n");
-	russianMessage("\t10 - меню мониторинга \n");
+	russianMessage("\t10 - вход в меню мониторинга \n");
 	russianMessage("\t0 - выход\n");
 
 	this->setSelection();

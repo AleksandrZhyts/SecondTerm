@@ -13,8 +13,6 @@ User user;
 UserPolicy policyUser; 
 Monitoring monitoring;
 Hash _hash;
-time_t t = time(NULL);
-char _data_time[30];
 
 Entrance_Program::Entrance_Program() {}
 
@@ -49,7 +47,6 @@ void Entrance_Program::use_menu_User()
 		{
 		case 1:	  
 			//копирование файла
-			ctime_s(_data_time, 30, &t);
 			
 			if (_file.setFileSource())
 			{
@@ -57,16 +54,11 @@ void Entrance_Program::use_menu_User()
 
 				policyUser.init_map_policy();
 
-				copy_resolution = policyUser.isUserCopyFile(_file.getFileSource(), user.getUser());
+				copy_resolution = policyUser.isUserCopyFile(_file.getFileSource(), user.getUser().user_Policy);
 
 				if (copy_resolution == 0)
 				{
-					russianMessage("\nНет прав для копирования\n"); 
-					
-					//monitoring
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileDestination(),false, "No right to copy");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
-
+					russianMessage("\nНет прав для копирования\n"); //monitoring 
 					break;
 				}
 				if (copy_resolution == 1)
@@ -74,24 +66,16 @@ void Entrance_Program::use_menu_User()
 					//Шифрование
 					russianMessage("\nКопирование с шифрованием\n");
 					
-					if (!_hash.is_File_Shifr(_file.getFileSource()))  
+					if (!_hash.is_File_Shifr(_file.getFileSource()))  //Мониторинг
 						_hash.shifrFile(_file.getFileSource());
 
 					_file.move_File(_file.getFileSource(), _file.getFileDestination());
-					//Мониторинг
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileDestination(), true, "Copy use shifr");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
-
 					break;
 				}
 				if (copy_resolution == 2)
 				{
 					russianMessage("\nОбычное копирование \n");
 					_file.move_File(_file.getFileSource(), _file.getFileDestination());
-
-					//Мониторинг
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileDestination(), true, "Copy file");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
 				}
 			}
 			break; 
@@ -99,41 +83,17 @@ void Entrance_Program::use_menu_User()
 			//шифрования файла
 			if (_file.setFileSource())
 			{
-				if (!_hash.is_File_Shifr(_file.getFileSource()))
-				{
+				if (!_hash.is_File_Shifr(_file.getFileSource()))  //Мониторинг
 					_hash.shifrFile(_file.getFileSource());
-
-					//Мониторинг
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileSource(), true, "Encrypted file");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
-				}
-				else
-				{
-					russianMessage("\nФайл уже зашифрован\n");
-					
-					//Мониторинг
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileSource(), false, "The file is already encrypted");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
-				}
+				else russianMessage("\nФайл уже зашифрован\n");
 			}
 			break;
 		case 3:
 			//расшифровка файла
-			if (_file.setFileSource())    
+			if (_file.setFileSource())    //Мониторинг
 			{
 				if (_hash.is_File_Shifr(_file.getFileSource()))
-				{
 					_hash.shifrFile(_file.getFileSource(), true);
-
-					//Мониторинг
-					monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileSource(), true, "Decoding file");
-					if (monitoring.Get_Status()) monitoring.Add_To_File();
-				}
-			}
-			else
-			{
-				monitoring.Init_Data(user.getUser().name, _data_time, _file.getFileSource(), _file.getFileSource(), false, "Trying to decipher the unencrypted file");
-				if (monitoring.Get_Status()) monitoring.Add_To_File();
 			}
 			break;
 		case 4:
@@ -225,23 +185,18 @@ void Entrance_Program::use_menu_Monitoring()
 		{
 		case 1:
 			//статистика по пользователю
-			monitoring.Show_Stat();
 			break;
 		case 2:
 			//статистика по причинам неудач
-			monitoring.Show_Fail_Stat();
 			break;
 		case 3:
 			//соотношение удачных попыток к неудачным
-			monitoring.Show_Ratio();
 			break;
 		case 4:
 			//просмотр не удачных попыток
-			monitoring.Show_Fail_Ettemts();
 			break;
 		case 5:
 			//просмотр удачных попыток
-			monitoring.Show_Suc_Ettemts();
 			break;
 		}
 }

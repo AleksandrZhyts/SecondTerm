@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-struct member;
-
 UserPolicy::UserPolicy(){}
 
 void UserPolicy::init_map_policy()
@@ -57,7 +55,7 @@ void UserPolicy::init_map_policy()
 	fclose(f_Policy);
 }
 
-int UserPolicy::isUserCopyFile(string filename, const member& us_Policy)
+int UserPolicy::isUserCopyFile(string filename, const int& us_Policy) 
 {
 	int nWordEnd = filename.find('.'),
 		value_copy = 0,
@@ -86,15 +84,9 @@ int UserPolicy::isUserCopyFile(string filename, const member& us_Policy)
 	string str_curent,
 		   str_number_Rule;
 	 
-	if (us_Policy.user_Policy == 1) str_number_Rule = "guest.rule1";
-	if (us_Policy.user_Policy == 2) str_number_Rule = "developer.rule1";
-	if (us_Policy.user_Policy == 3) str_number_Rule = "tester.rule1";
-
-	Monitoring monitoring;
-	time_t t = time(NULL);
-	char _data_time[30];
-	ctime_s(_data_time, 30, &t);
-
+	if (us_Policy == 1) str_number_Rule = "guest.rule1";
+	if (us_Policy == 2) str_number_Rule = "developer.rule1";
+	if (us_Policy == 3) str_number_Rule = "tester.rule1";
 	
 	it = _policy.find(str_number_Rule);
 	
@@ -103,12 +95,7 @@ int UserPolicy::isUserCopyFile(string filename, const member& us_Policy)
 	{
 		fclose(f);
 		if (is_file_shifr) _hash.shifrFile(filename);
-		
-		//monitoring
-		monitoring.Init_Data(us_Policy.name, _data_time, filename, filename, false, "Violated the first rule of backup policies");
-		if (monitoring.Get_Status()) monitoring.Add_To_File();
-	
-		return value_copy;   
+		return value_copy;  //monitoring 
 	}
 
 	it++;
@@ -117,12 +104,7 @@ int UserPolicy::isUserCopyFile(string filename, const member& us_Policy)
 	{
 		fclose(f);
 		if (is_file_shifr) _hash.shifrFile(filename);
-
-		//monitoring
-		monitoring.Init_Data(us_Policy.name, _data_time, filename, filename, false, "Violated the second rule of backup policies");
-		if (monitoring.Get_Status()) monitoring.Add_To_File();
-
-		return value_copy;  
+		return value_copy;  //monitoring 
 	}
 
 	it++;
@@ -153,12 +135,7 @@ int UserPolicy::isUserCopyFile(string filename, const member& us_Policy)
 			value_copy = 0;
 			fclose(f);
 			if (is_file_shifr) _hash.shifrFile(filename);
-
-			//monitoring
-			monitoring.Init_Data(us_Policy.name, _data_time, filename, filename, false, "Violated the fifth rule of backup policies");
-			if (monitoring.Get_Status()) monitoring.Add_To_File();
-
-			return value_copy; 
+			return value_copy; //monitoring
 		}
 	}
 		

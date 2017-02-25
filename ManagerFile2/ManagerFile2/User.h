@@ -9,7 +9,6 @@ struct member
 	int user_Policy;
 };
 
-
 class User
 {
 public:

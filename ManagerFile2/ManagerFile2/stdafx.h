@@ -1,7 +1,6 @@
 #pragma once
 
 #include "targetver.h"
-
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
@@ -13,7 +12,6 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
-#include <time.h>
 
 #include "Menu.h"
 #include "User.h"
@@ -21,5 +19,3 @@
 #include "Work_with_File.h"
 #include "hash.h"
 #include "Monitoring.h"
-
-
