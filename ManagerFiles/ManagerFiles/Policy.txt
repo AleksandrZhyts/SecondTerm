@@ -1,8 +1,8 @@
-guest.rule1=.exe,.cpp,.hpp,.dll;                        //Запрещено копировать
-guest.rule2=.txt,.rtf;                                  //Разрешено копировать
-guest.rule3=.txt;                                       //Разрешено копировать только с шифрованием
-guest.rule4=plan,old project;                           //Разрешено копировать только с шифрованием
-guest.rule5=programm,main,include,secret,password;      //Запрещено копировать
+guest.rule1=;              
+guest.rule2=;                              
+guest.rule3=.txt;                          
+guest.rule4=plan,old project;                  
+guest.rule5=programm,main,include,secret,password;
 developer.rule1=.dll,.lib;
 developer.rule2=.txt,.rtf,.exe,.cpp,.hpp;
 developer.rule3=.cpp;

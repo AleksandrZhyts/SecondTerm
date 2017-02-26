@@ -88,3 +88,118 @@ Sat Feb 25 18:04:37 2017
 d:\decod.txt
 d:\decod3.txt
 
+[Success]
+Yura
+Sun Feb 26 15:07:04 2017
+
+d:\decod.txt
+g:\decod.txt
+
+[Success]
+Dima
+Sun Feb 26 15:07:04 2017
+
+d:\decod.txt
+d:\decod.txt
+
+[Success]
+Dima
+Sun Feb 26 15:07:04 2017
+
+d:\decod.txt
+d:\decod.txt
+
+[Error]
+Leha
+Sun Feb 26 15:11:42 2017
+
+d:\decod.txt
+d:\decod.txt
+Violated the fifth rule of backup policies
+
+[Error]
+Leha
+Sun Feb 26 15:07:04 2017
+
+d:\decod.txt
+d:\decod12.txt
+No right to copy
+
+[Error]
+Leha
+Sun Feb 26 16:33:44 2017
+
+d:\Menu.cpp
+d:\Menu.cpp
+Violated the first rule of backup policies
+
+[Error]
+Leha
+Sun Feb 26 16:32:26 2017
+
+d:\Menu.cpp
+d:\Menu1.cpp
+No right to copy
+
+[Error]
+Leha
+Sun Feb 26 17:22:08 2017
+
+d:\Menu.cpp
+d:\Menu.cpp
+Violated the first rule of backup policies
+
+[Error]
+Leha
+Sun Feb 26 17:09:18 2017
+
+d:\Menu.cpp
+d:\Men11u.cpp
+No right to copy
+
+[Success]
+Leha
+Sun Feb 26 17:09:18 2017
+
+D:\input.txt
+D:\input25.txt
+
+[Error]
+Leha
+Sun Feb 26 17:28:03 2017
+
+d:\123.rtf
+d:\123.rtf
+Violated the fifth rule of backup policies
+
+[Error]
+Leha
+Sun Feb 26 17:09:18 2017
+
+d:\123.rtf
+d:\123456.rtf
+No right to copy
+
+[Success]
+Leha
+Sun Feb 26 17:09:18 2017
+
+d:\123.rtf
+d:\123456.rtf
+
+[Error]
+Leha
+Sun Feb 26 17:31:58 2017
+
+d:\123.rtf
+d:\123.rtf
+Violated the second rule of backup policies
+
+[Error]
+Leha
+Sun Feb 26 17:31:16 2017
+
+d:\123.rtf
+d:\1234.rtf
+No right to copy
+
